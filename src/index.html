@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Fire and Water RPG</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">
+          This is a simple hero unit, a simple jumbotron-style component for
+          calling extra attention to featured content or information.
+        </p>
+        <hr class="my-4" />
+      </div>
+      <div class="row" id="starting-level-row">
+        <div class="col-8">
+          Welcome to the game! Please enter in your name, and choose a skill
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <input
+              type="text"
+              id="player-name"
+              class="form-control"
+              placeholder="Enter in your name"
+            />
+            <select id="player-skill" class="form-control">
+              <option disabled selected value>Select a skill</option>
+              <option>Intelligence</option>
+              <option>Strength</option>
+              <option>Agility</option>
+              <option>Accuracy</option>
+            </select>
+            <button type="submit" class="btn btn-dark" id="start-game">
+              Start The Game!
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row hidden" id="level-one-row">
+        <p id="message">
+          Do you choose to fight with
+          <span class="btn btn-dark" id="option-one"></span> or
+          <span class="btn btn-dark" id="option-two"></span> or
+          <span class="btn btn-dark" id="option-three"></span>?
+        </p>
+      </div>
+      <div class="row hidden" id="level-two-row">
+        <p id="L2-message">
+          Do you choose to fight with
+          <span class="btn btn-dark" id="L2-option-one"></span> or
+          <span class="btn btn-dark" id="L2-option-two"></span> or
+          <span class="btn btn-dark" id="L2-option-three"></span>?
+        </p>
+      </div>
+      <div class="row hidden" id="level-three-row">
+        <p id="L3-message">
+          <span class="btn btn-dark" id="L3-option-one"></span> or
+          <span class="btn btn-dark" id="L3-option-two"></span>?
+        </p>
+      </div>
+      <div class="row hidden" id="final-row">
+        <p id="final-message"></p>
+      </div>
+    </div>
+  </body>
+</html>
