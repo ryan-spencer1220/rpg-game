@@ -1,4 +1,4 @@
-import PlayerSelect from "../src/js/player";
+import PlayerSelect from "../src/js/player.js";
 
 describe("PlayerSelect", () => {
   let myPlayer;
