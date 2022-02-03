@@ -18,17 +18,71 @@ export default class GamePlay {
         return false;
     }
   }
+
+  levelTwoRoute(myChoice) {
+    switch (this.firstLevelRoute) {
+      case "Fire":
+        if (myChoice === "Woods") {
+          this.secondLevelRoute = "Woods";
+          return true;
+        } else if (myChoice === "Town") {
+          this.secondLevelRoute = "Town";
+          return true;
+        } else {
+          this.secondLevelRoute = "Volcano";
+          return false;
+        }
+      case "Water":
+        if (myChoice === "Beach") {
+          this.secondLevelRoute = "Beach";
+          return true;
+        } else if (myChoice === "Lake") {
+          this.secondLevelRoute = "Lake";
+          return true;
+        } else {
+          this.secondLevelRoute = "Hurricane";
+          return false;
+        }
+    }
+  }
+  levelThreeRoute(myChoice) {
+    switch (this.firstLevelRoute) {
+      case "Fire":
+        if (this.secondLevelRoute === "Woods") {
+          if (myChoice === "Axe") {
+            this.thirdLevelRoute = "Axe";
+            return false;
+          } else {
+            this.thirdLevelRoute = "Water";
+            return true;
+          }
+        } else {
+          if (myChoice === "Axe") {
+            this.thirdLevelRoute = "Axe";
+            return false;
+          } else {
+            this.thirdLevelRoute = "Water";
+            return true;
+          }
+        }
+      case "Water":
+        if (this.secondLevelRoute === "Beach") {
+          if (myChoice === "Axe") {
+            this.thirdLevelRoute = "Axe";
+            return true;
+          } else {
+            this.thirdLevelRoute = "Water";
+            return false;
+          }
+        } else {
+          if (myChoice === "Axe") {
+            this.thirdLevelRoute = "Axe";
+            return true;
+          } else {
+            this.thirdLevelRoute = "Water";
+            return false;
+          }
+        }
+    }
+  }
 }
-
-/* you make a choice, fire or water
-currentLevel is set to 1
-firstLevelRoute is set to fire/water
-
-UI logic checks to see what current level is
-if 1, checks to see if fire or water
-presents options 
-
-
-
-
-*/
