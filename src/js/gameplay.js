@@ -11,18 +11,23 @@ export default class GamePlay {
       case "Fire":
         this.firstLevelRoute = "Fire";
         this.currentLevelMessage =
-          "You've chosen Fire! What will you choose next? Woods or Town or Volcano?";
+          "Hi " +
+          this.player.name +
+          "! You've chosen Fire! What will you choose next? Woods or Town or Volcano?";
         this.currentLevelChoices = ["Woods", "Town", "Volcano"];
         return true;
       case "Water":
         this.firstLevelRoute = "Water";
         this.currentLevelMessage =
-          "You've chosen Water! What will you choose next? Beach or Lake or Hurricane?";
+          "Hi " +
+          this.player.name +
+          "! You've chosen Water! What will you choose next? Beach or Lake or Hurricane?";
         this.currentLevelChoices = ["Beach", "Lake", "Hurricane"];
         return true;
       default:
         this.firstLevelRoute = "Neither";
-        this.currentLevelMessage = "Game Over! You have to fight!";
+        this.currentLevelMessage =
+          "Game Over! Sorry " + this.player.name + "! You have to fight!";
         return false;
     }
   }
@@ -44,7 +49,10 @@ export default class GamePlay {
           return true;
         } else {
           this.secondLevelRoute = "Volcano";
-          this.currentLevelMessage = "Game Over! You died in the volcano!";
+          this.currentLevelMessage =
+            "Game Over! Sorry " +
+            this.player.name +
+            "! You died in the volcano!";
           return false;
         }
       case "Water":
@@ -62,7 +70,8 @@ export default class GamePlay {
           return true;
         } else {
           this.secondLevelRoute = "Hurricane";
-          this.currentLevelMessage = "Game Over! You died in the hurricane!";
+          this.currentLevelMessage =
+            "Game Over!" + this.player.name + "! You died in the hurricane!";
           return false;
         }
     }
@@ -72,50 +81,78 @@ export default class GamePlay {
       case "Fire":
         if (this.secondLevelRoute === "Woods") {
           if (myChoice === "Axe") {
-            this.thirdLevelRoute = "Axe";
             this.currentLevelMessage =
-              "You've chosen to fight the monster with an Axe! Unfortunately you have died!";
+              "You've chosen to fight the monster with an Axe! Unfortunately you have died " +
+              this.player.name;
             return false;
           } else {
-            this.thirdLevelRoute = "Water";
-            this.currentLevelMessage =
-              "You've chosen to fight the monster with water. Great choice! You've won!";
-            return true;
+            //you chose water, not axe
+            if (this.player.skill === "Intelligence") {
+              this.currentLevelMessage =
+                "You've chosen to fight the monster with water and you're super intelligent. Great choice! You've won!";
+              return true;
+            } else {
+              this.currentLevelMessage =
+                "You've chosen to fight the monster with water but you have no intelligence! Terrible choice! You've died " +
+                this.player.name;
+              +"!";
+              return false;
+            }
           }
         } else {
+          //fire and town
           if (myChoice === "Axe") {
-            this.thirdLevelRoute = "Axe";
             this.currentLevelMessage =
               "You've chosen to fight the monster with an Axe! Unfortunately you have died!";
             return false;
           } else {
-            this.thirdLevelRoute = "Water";
-            this.currentLevelMessage =
-              "You've chosen to fight the monster with water. Great choice! You've won!";
-            return true;
+            if (this.player.skill === "Accuracy") {
+              this.currentLevelMessage =
+                "You've chosen to fight the monster with water and you're super accurate! Great choice " +
+                this.player.name +
+                "! You've won!";
+              return true;
+            } else {
+              this.currentLevelMessage =
+                "You've chosen to fight the monster with water but you have no accuracy! Terrible choice! You've died!";
+              return false;
+            }
           }
         }
       case "Water":
         if (this.secondLevelRoute === "Beach") {
           if (myChoice === "Axe") {
-            this.thirdLevelRoute = "Axe";
-            this.currentLevelMessage =
-              "You've chosen to fight the monster with an axe. Great choice! You've won!";
-            return true;
+            if (this.player.skill === "Agility") {
+              this.currentLevelMessage =
+                "You've chosen to fight the monster with water and are super aglie. Great choice " +
+                this.player.name +
+                "! You've won!";
+              return true;
+            } else {
+              this.currentLevelMessage =
+                "You've chosen to fight the monster with water but you have no agility! Terrible choice! You've died!";
+              return false;
+            }
           } else {
-            this.thirdLevelRoute = "Water";
             this.currentLevelMessage =
               "You've chosen to fight the monster with water. Unfortunately you have died!";
             return false;
           }
         } else {
+          //water lake
           if (myChoice === "Axe") {
-            this.thirdLevelRoute = "Axe";
-            this.currentLevelMessage =
-              "You've chosen to fight the monster with an axe. Great choice! You've won!";
-            return true;
+            if (this.player.skill === "Strength") {
+              this.currentLevelMessage =
+                "You've chosen to fight the monster with water and you're super strong. Great choice " +
+                this.player.name +
+                "! You've won!";
+              return true;
+            } else {
+              this.currentLevelMessage =
+                "You've chosen to fight the monster with water but you have no strength! Terrible choice! You've died!";
+              return false;
+            }
           } else {
-            this.thirdLevelRoute = "Water";
             this.currentLevelMessage =
               "You've chosen to fight the monster with water. Unfortunately you have died!";
             return false;
